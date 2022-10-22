@@ -12,7 +12,7 @@ def printValues(a):
     global z
     z = NULL
 
-# celowo pomijam liczbę z jeśli jest caukowita, by być zgodnym z poleceniem
+# celowo pomijam liczbę 'z' jeśli jest caukowita, by być zgodnym z poleceniem, ponieważ to ona jest średnią
     if((i-j) > 20):
         z = (j+i)/2
         j = round(z, 0)-3
