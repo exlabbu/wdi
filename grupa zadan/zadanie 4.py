@@ -5,44 +5,58 @@ class Human:
     def __init__(self):
         while True:
             name = input("Proszę podaj swoje imie: ")
-            try:
-                # problem jest w tym że tu nie chce on realnie stosować się do wyjątków
-                # nw czy ta konstrukcja nie jest trochę problemem, trzeba ją zdebugować
-                state = bool(re.match("[A-Za-zżńóąśćłźŹŚ]",name))
-            except ValueError:
-                print("flag error name Human")
-                continue
-            else:
-                print("flag break name Human")
+            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ'-]+$",name))):
                 self.name = name
                 break
-        SurName = input("Proszę podaj swoje nazwisko: ")
-        #to jedyne w pełni działa i nie pozwala wprowadzić innego wejścia niż int
+            print("błędna wartość")
+        while True:
+            surName = input("Proszę podaj swoje nazwisko: ")
+            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ' -.]+$",surName))):
+                self.surName = surName
+                break
+            print("błędna wartość")
         while True:
             try:
-                self.Age = int(input("Proszę podaj swój wiek: "))
+                self.age = int(input("Proszę podaj swój wiek: "))
             except ValueError:
-                print("flag error age Human")
+                print("błędna wartość")
                 continue
             else:
-                print("flag break age Human")
                 break
-        FavAnimal = input("Proszę podaj swoje ulubione zwierze: ")
-        FavDish = input("Proszę podaj swoją ulubioną potrawę: ")
+        while True:
+            favAnimal = input("Proszę podaj swoje ulubione zwierze: ")
+            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ]+$",favAnimal))):
+                self.favAnimal = favAnimal
+                break
+            print("błędna wartość")
+        while True:
+            favDish = input("Proszę podaj swoją ulubioną potrawę: ")
+            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ]+$",favDish))):
+                self.favDish = favDish
+                break
+            print("błędna wartość")
 
 
-    def printName(self):
-        print(self.name)
-    def printSurName(self):
-        print(self.SurName)
-    def printAge(self):
-        print(self.Age)
-    def printFavAnimal(self):
-        print(self.FavAnimal)
-    def printFavDish(self):
-        print(self.FavDish)
-    def doMath(a,b):
-        print(a/b)
+    def printIntroduction(self):
+        print(" -- Parametry jednostki -- ")
+        print("Imie: "+self.name)
+        print("Nazwisko: "+self.surName)
+        print("Wiek: "+str(self.age))
+        print("Ulubione Zwierze: "+self.favAnimal)
+        print("Ulubiona Potrawa: "+self.favDish)
+
+    def doMath(self,a,b):
+        try:
+            w = a/b
+        except:
+            print("błędne wartości")
+        else:
+            print(w)
 
 obj = Human()
-        
+
+obj.printIntroduction()
+
+print(" -- Dzielenie 5 przez 7 -- ")
+obj.doMath(5,7)
+
