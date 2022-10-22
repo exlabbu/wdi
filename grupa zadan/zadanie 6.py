@@ -76,7 +76,7 @@ class PairOfNumbers:
             # dodje tu wyjątek bo udało mi się na ogromnych wartościach, doprowadzić do przerwania programu przy konwersji w na str
             try:
                 print("Wynik mnożenia to "+str(self.w))
-            except:
+            except ValueError:
                 self.errors("Overflow")
     def quotient(self):
         try:
