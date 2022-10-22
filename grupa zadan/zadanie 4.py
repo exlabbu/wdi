@@ -2,7 +2,13 @@ import re
 
 class Human:
 
-    def __init__(self):
+    name = "Domink"
+    surName = "Motyl"
+    age = 20
+    favAnimal = "Pies"
+    favDish = "Pizza"      
+
+    def setValues(self):
         while True:
             name = input("Proszę podaj swoje imie: ")
             if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ'-]+$",name))):
@@ -38,25 +44,49 @@ class Human:
 
 
     def printIntroduction(self):
-        print(" -- Parametry jednostki -- ")
+        print(" -- Parametry Człowieka -- ")
         print("Imie: "+self.name)
         print("Nazwisko: "+self.surName)
         print("Wiek: "+str(self.age))
         print("Ulubione Zwierze: "+self.favAnimal)
         print("Ulubiona Potrawa: "+self.favDish)
 
-    def doMath(self,a,b):
+    def __init__(self):
+        self.printIntroduction()
+        decide=input("Czy chcesz zmienić powyższe wartości? Y/N ")
+        if(bool(re.match("^[YyNnTt]$",decide))):
+            if(decide != "N" and decide != "n"):
+                self.setValues()
+                self.printIntroduction()
+
+    def doMath(self,a,b,r):
         try:
             w = a/b
         except:
-            print("błędne wartości")
+            print("błędne wartości w dzieleniu")
         else:
-            print(w)
-
+            match r:
+                case 0:
+                    print(w)
+                case 1:
+                    print(round(w,1))
+                case 3:
+                    print(round(w,3))
+                case 5:
+                    print(round(w,5))
+                case 10:
+                    print(round(w,10))
 obj = Human()
 
-obj.printIntroduction()
-
 print(" -- Dzielenie 5 przez 7 -- ")
-obj.doMath(5,7)
+print(" bez zaokrąglenia ")
+obj.doMath(5,7,0)
+print(" zaokrąglenie do 1 miejsca po przecinku ")
+obj.doMath(5,7,1)
+print(" zaokrąglenie do 3 miejsc po przecinku ")
+obj.doMath(5,7,3)
+print(" zaokrąglenie do 5 miejsc po przecinku ")
+obj.doMath(5,7,5)
+print(" zaokrąglenie do 10 miejsc po przecinku ")
+obj.doMath(5,7,10)
 
