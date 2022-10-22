@@ -1,7 +1,6 @@
 import re
 
 class Human:
-
     name = "Domink"
     surName = "Motyl"
     age = 20
@@ -31,13 +30,13 @@ class Human:
                 break
         while True:
             favAnimal = input("Proszę podaj swoje ulubione zwierze: ")
-            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ]+$",favAnimal))):
+            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ-]+$",favAnimal))):
                 self.favAnimal = favAnimal
                 break
             print("błędna wartość")
         while True:
             favDish = input("Proszę podaj swoją ulubioną potrawę: ")
-            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ]+$",favDish))):
+            if(bool(re.match("^[A-Za-zżńóąśćłźŹŚ -']+$",favDish))):
                 self.favDish = favDish
                 break
             print("błędna wartość")
