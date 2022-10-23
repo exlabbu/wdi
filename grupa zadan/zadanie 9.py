@@ -160,15 +160,16 @@ def autoTestUserOperations():
     user = Aplication(moneyOnAccount,1111)
     wpłata = 100
     wypłata = 60
+    pin = 1111
     try:
-        user.payment(wpłata)   # na koncie powinno na start być 20 bo tyle w kontruktorze user dostał, więc po tej operacji będzie 120.20
-        user.payout(wypłata)     # po tej operacji powinno być 60.20
-        user.checkSaldo()
+        user.payment(pin,wpłata)   # na koncie powinno na start być 20 bo tyle w kontruktorze user dostał, więc po tej operacji będzie 120.20
+        user.payout(pin,wypłata)     # po tej operacji powinno być 60.20
+        user.checkSaldo(pin)
         
-        if (user.checkSaldo(1) != (wpłata-wypłata+moneyOnAccount)):
+        if (user.checkSaldo(pin,1) != (wpłata-wypłata+moneyOnAccount)):
             print("Błędna ilość środków na koncie")
             exit()
-        elif (user.checkSaldo(1) < 0):
+        elif (user.checkSaldo(pin,1) < 0):
             print("Tu nie powinno się dać osiągnąć długu")
             exit()
     except Exception as err:
