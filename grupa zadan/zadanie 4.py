@@ -50,6 +50,10 @@ class Human:
         print("Ulubione Zwierze: "+self.favAnimal)
         print("Ulubiona Potrawa: "+self.favDish)
 
+# wersja spełniająca wymóg wszystkiego w jedym wywołaniu
+    def printRaport(self):
+        print("\n Imie: "+self.name+" Nazwisko "+self.surName+" Wiek "+str(self.age)+" Ulubione Zwierze "+self.favAnimal+" Ulubiona Potrawa "+self.favDish+" \n")
+
     def __init__(self):
         self.printIntroduction()
         decide=input("Czy chcesz zmienić powyższe wartości? Y/N ")
@@ -75,6 +79,17 @@ class Human:
                     print(round(w,5))
                 case 10:
                     print(round(w,10))
+
+# wersja spełniająca wymóg braku zmiennych
+    def setValuesNoVaribles(self):
+        print((input("Imie: ")))
+        print((input("Nazwisko: ")))
+        print((str(input("Wiek: "))))
+        print((input("Ulubiona potrawa: ")))
+        print((input("Ulubione zwierzę: ")))
+        print(5/7)
+
+        
 obj = Human()
 
 print(" -- Dzielenie 5 przez 7 -- ")
@@ -88,4 +103,7 @@ print(" zaokrąglenie do 5 miejsc po przecinku ")
 obj.doMath(5,7,5)
 print(" zaokrąglenie do 10 miejsc po przecinku ")
 obj.doMath(5,7,10)
+
+obj.printRaport()
+obj.setValuesNoVaribles()
 
