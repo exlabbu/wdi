@@ -1,195 +1,174 @@
 import random
 import re
 
+
 class Calculator:
-    lastResult = 0
-
-    def addition(self, arg):
-        sum = self.lastResult
+    def addition(self, a,b):
         try:
-            sum += arg
+            w = a + b
         except:
             return False
-        self.lastResult = sum
-
-    def subtraction(self, arg):
-        sub = self.lastResult
+        else:
+            return w
+    def subtraction(self, a, b):
         try:
-            sub -= arg
+            w = a - b
         except:
             return False
-        self.lastResult = sub
-
-    def product(self, arg):
-        prod = self.lastResult
+        else:
+            return w
+    def product(self, a, b):
         try:
-            prod *= arg
+            w = a * b
         except:
             return False
-        self.lastResult = prod
-
-    def quotient(self, arg):
-        quot = self.lastResult
+        else:
+            return w
+    def quotient(self, a, b):
         try:
-            quot /= arg
+            w = a / b
         except:
             return False
-        self.lastResult = quot
-
-    def square(self, arg):
+        else:
+            return w
+    def powerOf(self, a, b):
         try:
-            arg **= 2
+            w = a ** b
         except:
             return False
-        self.lastResult = arg
-
-    def rootSquare(self, arg):
+        else:
+            return w
+    def elementOf(self, a, b):
         try:
-            rsqua **= 0.5
+            w = a ** (1/b)
         except:
             return False
-        self.lastResult = arg
-        
+        else:
+            return w
     def random(self, a, b):
-            self.lastResult = random.randint(a,b)
+        try:
+            w = random.randint(a,b)
+        except:
+            return False
+        else:
+            return w
 
 class Aplication:
     def __init__(self):
-        self.connection = Calculator()
+        self.connect = Calculator()
 
-    def insertValues(self):
-            input("Podaj wartość: ")
+    def askToContinue(self):
+        flag = 0
+        while (flag != 1):
+            decide=input("Czy chcesz wprowadzić nowe dane? Y/N ")
+            if(bool(re.match("^[YyNnTt]$",decide))):
+                flag = 1
+                if(decide != "N" and decide != "n"):
+                    self.run()
+        exit()
 
-    def setMode(self):
-        print(" ----- Witamy w wesołym kalkulatorze -----")
-        print(" Proszę wybrać, jeden z poniższych trybów ")
-        print("[1] Dodawanie")
-        print("[2] Odejmowanie")
-        print("[3] Mnożenie")
-        print("[4] Dzielenie")
-        print("[5] Potęgowanie")
-        print("[6] Pierwiastkowanie")
-        print("[7] Wyjdź")
+    def inserValues(self):
         while True:
             try:
-                mode = int(input("Wybierz tryb: "))
+                arg = float(input("Podaj liczbę: "))
             except:
                 print("Błędna wartość")
                 continue
             else:
-                if(mode > 7):
+                return arg
+    def addition(self,a,b):
+        w = self.connect.addition(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def subtraction(self,a,b):
+        w = self.connect.subtraction(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def product(self,a,b):
+        w = self.connect.product(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def quotient(self,a,b):
+        w = self.connect.quotient(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def powerOf(self,a,b):
+        w = self.connect.powerOf(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def elementOf(self,a,b):
+        w = self.connect.elementOf(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def random(self,a,b):
+        w = self.connect.random(a,b)
+        if(w == False):
+            print("Nieprawidłowa operacja")
+        else:
+            print("Wynik to "+str(w))
+        self.askToContinue()
+    def run(self):
+        a = self.inserValues()
+        b = self.inserValues()
+
+        def setMode():
+            print(" ----- Witamy w wesołym kalkulatorze -----")
+            print(" Proszę wybrać, jeden z poniższych trybów ")
+            print("[1] Dodawanie")
+            print("[2] Odejmowanie")
+            print("[3] Mnożenie")
+            print("[4] Dzielenie")
+            print("[5] Potęgowanie")
+            print("[6] Pierwiastkowanie")
+            print("[7] Wyjdź")
+            while True:
+                try:
+                    mode = int(input("Wybierz tryb: "))
+                except:
                     print("Błędna wartość")
                     continue
-                break
-        return mode
+                else:
+                    if(mode > 7):
+                        print("Błędna wartość")
+                        continue
+                    break
+            return mode
 
-    def askToConitnue(self):
-        flag = 0
-        while (flag != 1):
-            decide=input("Czy chcesz wprowadzić nowe dane? (Wynik twoich obliczeń został zachowany i możesz wykonywać na nim operacje) Y/N")
-            if(bool(re.match("^[YyNnTt]$",decide))):
-                flag = 1
-                if(decide != "N" and decide != "n"):
-                    self.connection.lastResult = 0
-                    sflag = 0
-                    while (sflag != 1):
-                        decide=input("Czy chcesz kontynułować obliczenia? Y/N")
-                        if(bool(re.match("^[YyNnTt]$",decide))):
-                            sflag = 1
-                            if(decide != "N" and decide != "n"):
-                                self.run()
-                        else:
-                            print("Błędna wartość")
-            else:
-                print("Błędna wartość")
-            
-                        
-       
-
-    def addition(self):
-        print("Możesz podać dowolną ilość liczb do zsumowania, by wyjść wpisz exit")
-        val = []
-        i = 0
-        while True:
-            val.append(self.insertValues())
-            if(val[i] != "exit" or val[i] != "Exit"):
-                val = val [ : -1]
-                break
-            i += 1
-        for x in val:
-            self.connection.addition(x)
-        print(self.connection.lastResult)
-        self.askToConitnue()
-
-    def subtraction(self):
-        print("Możesz podać dowolną ilość liczb do odjęcia, by wyjść wpisz exit, lub control + c")
-        val = []
-        i = 0
-        while True:
-            val.append(self.insertValues())
-            if(val[i] != "exit" or val[i] != "Exit"):
-                val = val [ : -1]
-                break
-            i += 1
-        for x in val:
-            self.connection.subtraction(x)
-        print(self.connection.lastResult)
-        self.askToConitnue()
-
-    def product(self):
-        print("Możesz podać dowolną ilość liczb do pomnożenia, by wyjść wpisz exit, lub control + c")
-        val = []
-        i = 0
-        while True:
-            val.append(self.insertValues())
-            if(val[i] != "exit" or val[i] != "Exit"):
-                val = val [ : -1]
-                break
-            i += 1
-        for x in val:
-            self.connection.product(x)
-        print(self.connection.lastResult)
-        self.askToConitnue()
-    def quotient(self):
-        print("Możesz podać dowolną ilość liczb do podzielenia, by wyjść wpisz exit, lub control + c")
-        val = []
-        i = 0
-        while True:
-            val.append(self.insertValues())
-            if(val[i] != "exit" or val[i] != "Exit"):
-                val = val [ : -1]
-                break
-            i += 1
-        for x in val:
-            self.connection.quotient(x)
-        print(self.connection.lastResult)
-        self.askToConitnue()
-
-    def square(self):
-        print("")
-    def rootSquare(self):
-        print("")
-    def random(self):
-        print("")
-
-    def run(self):
-        match self.setMode():
+        match setMode():
             case 1:
-                self.addition()
+                self.addition(a,b)
             case 2:
-                self.subtraction()
+                self.subtraction(a,b)
             case 3:
-                self.product()
+                self.product(a,b)
             case 4:
-                self.quotient()
+                self.quotient(a,b)
             case 5:
-                self.square()
+                self.powerOf(a,b)
             case 6:
-                self.rootSquare()
+                self.elementOf(a,b)
             case 7:
                 exit()
-        self.run()
 
 
 app = Aplication()
 app.run()
+
