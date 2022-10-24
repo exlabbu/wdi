@@ -3,7 +3,7 @@ from asyncio.windows_events import NULL
 
 
 def printValues(a):
-    print("podałeś następujące wartości:")
+    print("podałeś następujące wartości: ")
     # zamówiona pętla for. Nie za bardzo pasowała mi do reszty więc tylko tu udało mi się ją sensownie wcisnąć
     for c in a:
         print(c)
@@ -30,7 +30,7 @@ def printValues(a):
 def inputValues():
     while True:
         try:
-            a = int(input("Prosze podać liczbę będącą dolną granicą wypisywanego zakresu "))
+            a = int(input("Prosze podać liczbę będącą dolną granicą wypisywanego zakresu: "))
         except ValueError:
             print("Błędna wartość")
             continue
@@ -38,7 +38,7 @@ def inputValues():
             break
     while True:
         try:
-            b = int(input("Prosze podać liczbę będącą górną granicą wypisywanego zakresu "))
+            b = int(input("Prosze podać liczbę będącą górną granicą wypisywanego zakresu: "))
         except ValueError:
             print("Błędna wartość")
             continue

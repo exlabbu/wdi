@@ -4,7 +4,7 @@ import random
 def inuptValue():
     while True:
         try:
-            a = int(input("Podaj liczbę całkowitą nieujemną do choinki "))                
+            a = int(input("Podaj liczbę całkowitą nieujemną do choinki: "))                
         except:
             print("błędna wartość")
             continue
