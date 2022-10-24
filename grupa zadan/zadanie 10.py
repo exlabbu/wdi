@@ -78,54 +78,55 @@ class Aplication:
                 return arg
     def addition(self,a,b):
         w = self.connect.addition(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def subtraction(self,a,b):
         w = self.connect.subtraction(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def product(self,a,b):
         w = self.connect.product(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def quotient(self,a,b):
         w = self.connect.quotient(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def powerOf(self,a,b):
         w = self.connect.powerOf(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def elementOf(self,a,b):
         w = self.connect.elementOf(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def random(self,a,b):
         w = self.connect.random(a,b)
-        if(w == False):
+        if(w == False and type(w) == bool):
             print("Nieprawidłowa operacja")
         else:
             print("Wynik to "+str(w))
         self.askToContinue()
     def run(self):
+        print("\n Podaj dwie liczby do obliczeń w kalkulatorze: \n")
         a = self.inserValues()
         b = self.inserValues()
 

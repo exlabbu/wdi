@@ -28,7 +28,7 @@ class XmasTree:
     def countSapce(self,lev):
         # przyjmuje że level to aktualny poziom liczony od 1
         s = ""
-        for x in range(1,self.toTheTrunk - (lev-1)):
+        for x in range(1,self.toTheTrunk - (lev-2)):
             s = s + " "
         return s
 
@@ -57,7 +57,7 @@ class XmasTree:
             for x in range(1,lev-1):
                 s = s + randomizeTreeBoubles(2)
             return s
-        while (lev != self.height):
+        while (lev != self.height+1):
             print(self.countSapce(lev)+countXmasWidth(lev))
             lev += 1
 

@@ -117,7 +117,7 @@ class Aplication:
         elif(self.connection.checksaldo(pin) == "badpin"):
             print("\n Błędny PIN")
         else:
-            print("\n == Masz na koncie: "+str(self.connection.checksaldo(pin))+" zł == ")
+            print("\n == Masz na koncie: "+str(round(self.connection.checksaldo(pin),2))+" zł == ")
     def run(self, *args):
         if(len(args) > 0):
             print("\n")
@@ -174,12 +174,12 @@ def autoTestUserOperations():
             exit()
     except Exception as err:
         print("testy nie zaliczone " + str(err))
-    else:
-        print("wykik testów pozytywny")
+    #else:
+    #    print("wykik testów pozytywny")
 
 # test
 #autoTestUserOperations()
 
-
+# tu jest pin, w konstruktorze
 app = Aplication(50.5,str(2022))
 app.run()
