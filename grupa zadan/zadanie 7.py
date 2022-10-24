@@ -4,6 +4,7 @@ from asyncio.windows_events import NULL
 
 def printValues(a):
     print("podałeś następujące wartości:")
+    # zamówiona pętla for. Nie za bardzo pasowała mi do reszty więc tylko tu udało mi się ją sensownie wcisnąć
     for c in a:
         print(c)
     print(" -- Zakres wartości --")

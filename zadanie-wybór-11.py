@@ -1,5 +1,5 @@
 # NWW
-# Najprościej to obliczyć poprzez obliczenie NWD, dwuch liczb i podzielenie ilorazu tych liczb przez wynik NWD, konieczne są 2 iteracje dla 3 liczb
+# Najprościej to obliczyć poprzez obliczenie NWD, dwuch liczb i podzielenie ilorazu tych liczb przez wynik NWD, konieczne są 2 iteracje NWW dla 3 liczb
 
 # weryfikowałem poprawnośc obliczeń za pomocą dostępnych w internecie kalkulatorów i uzyskiwałem identyczne wyniki, moja metoda okazała się poprawna
 
