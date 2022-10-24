@@ -6,31 +6,28 @@ class Calculator:
     lastResult = 0
 
 # zastosować ** dla wszystkich, bo zmieniam z tupl na listy
-    def addition(self, **kargs):
+    def addition(self, arg):
         sum = self.lastResult
-        for x in kargs:
-            sum += kargs[x]
+        sum += arg[x]
         self.lastResult = sum
 
-    def subtraction(self, *args):
+    def subtraction(self, arg):
         sub = self.lastResult
-        for x in args:
-            sub -= args[x]
+        sub -= arg[x]
         self.lastResult = sub
 
-    def product(self, *args):
+    def product(self, arg):
         prod = self.lastResult
-        for x in args:
-            prod *= args[x]
+        prod *= arg[x]
         self.lastResult = prod
 
-    def quotient(self, *args):
+    def quotient(self, arg):
         quot = self.lastResult
-        for x in args:
-            quot /= args[x]
+        quot /= arg[x]
         self.lastResult = quot
 
     def square(self, arg):
+        if(self.lastresult == ):
         squa = self.lastResult
         squa **= 2
         self.lastResult = squa
