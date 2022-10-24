@@ -1,41 +1,54 @@
 import random
 import re
 
-
 class Calculator:
     lastResult = 0
 
-# zastosować ** dla wszystkich, bo zmieniam z tupl na listy
     def addition(self, arg):
         sum = self.lastResult
-        sum += arg[x]
+        try:
+            sum += arg
+        except:
+            return False
         self.lastResult = sum
 
     def subtraction(self, arg):
         sub = self.lastResult
-        sub -= arg[x]
+        try:
+            sub -= arg
+        except:
+            return False
         self.lastResult = sub
 
     def product(self, arg):
         prod = self.lastResult
-        prod *= arg[x]
+        try:
+            prod *= arg
+        except:
+            return False
         self.lastResult = prod
 
     def quotient(self, arg):
         quot = self.lastResult
-        quot /= arg[x]
+        try:
+            quot /= arg
+        except:
+            return False
         self.lastResult = quot
 
     def square(self, arg):
-        if(self.lastresult == ):
-        squa = self.lastResult
-        squa **= 2
-        self.lastResult = squa
+        try:
+            arg **= 2
+        except:
+            return False
+        self.lastResult = arg
 
     def rootSquare(self, arg):
-        rsqua = self.lastResult
-        rsqua **= 0.5
-        self.lastResult = rsqua
+        try:
+            rsqua **= 0.5
+        except:
+            return False
+        self.lastResult = arg
         
     def random(self, a, b):
             self.lastResult = random.randint(a,b)
@@ -45,7 +58,7 @@ class Aplication:
         self.connection = Calculator()
 
     def insertValues(self):
-        input("Podaj wartość: ")
+            input("Podaj wartość: ")
 
     def setMode(self):
         print(" ----- Witamy w wesołym kalkulatorze -----")
@@ -71,20 +84,22 @@ class Aplication:
         return mode
 
     def askToConitnue(self):
+        flag = 0
         while (flag != 1):
-            decide=input("Czy chcesz kontynułować obliczenia? Y/N")
+            decide=input("Czy chcesz wprowadzić nowe dane? (Wynik twoich obliczeń został zachowany i możesz wykonywać na nim operacje) Y/N")
             if(bool(re.match("^[YyNnTt]$",decide))):
                 flag = 1
                 if(decide != "N" and decide != "n"):
+                    self.connection.lastResult = 0
+                    sflag = 0
                     while (sflag != 1):
-                        decide=input("Czy chcesz wprowadzić nowe dane? (Wynik twoich obliczeń został zachowany i możesz wykonywać na nim operacje) Y/N")
+                        decide=input("Czy chcesz kontynułować obliczenia? Y/N")
                         if(bool(re.match("^[YyNnTt]$",decide))):
                             sflag = 1
                             if(decide != "N" and decide != "n"):
-                                self.connection.lastResult = 0
+                                self.run()
                         else:
                             print("Błędna wartość")
-                    self.run()
             else:
                 print("Błędna wartość")
             
@@ -92,49 +107,61 @@ class Aplication:
        
 
     def addition(self):
-        print("Możesz podać dowolną ilość liczb do zsumowania, by wyjść wpisz exit, lub control + c")
-        # val definiuje w ten sposób by zasygnalizować programowi że chce mieć tu listę
+        print("Możesz podać dowolną ilość liczb do zsumowania, by wyjść wpisz exit")
         val = []
         i = 0
         while True:
             val.append(self.insertValues())
-            if(val[i] != "exit" or val[i] != KeyboardInterrupt):
+            if(val[i] != "exit" or val[i] != "Exit"):
+                val = val [ : -1]
                 break
             i += 1
-        self.connection.addition(val)
+        for x in val:
+            self.connection.addition(x)
         print(self.connection.lastResult)
         self.askToConitnue()
 
     def subtraction(self):
         print("Możesz podać dowolną ilość liczb do odjęcia, by wyjść wpisz exit, lub control + c")
-        val = tuple(0)
+        val = []
         i = 0
-        while(val[i] != "exit" or val[i] != KeyboardInterrupt):
-            val[i] = self.insertValues()
+        while True:
+            val.append(self.insertValues())
+            if(val[i] != "exit" or val[i] != "Exit"):
+                val = val [ : -1]
+                break
             i += 1
-        self.connection.subtraction(val)
+        for x in val:
+            self.connection.subtraction(x)
         print(self.connection.lastResult)
         self.askToConitnue()
 
     def product(self):
         print("Możesz podać dowolną ilość liczb do pomnożenia, by wyjść wpisz exit, lub control + c")
-        val = tuple(1)
+        val = []
         i = 0
-        while(val[i] != "exit" or val[i] != KeyboardInterrupt):
-            val[i] = self.insertValues()
+        while True:
+            val.append(self.insertValues())
+            if(val[i] != "exit" or val[i] != "Exit"):
+                val = val [ : -1]
+                break
             i += 1
-        self.connection.product(val)
+        for x in val:
+            self.connection.product(x)
         print(self.connection.lastResult)
         self.askToConitnue()
-
     def quotient(self):
         print("Możesz podać dowolną ilość liczb do podzielenia, by wyjść wpisz exit, lub control + c")
-        val = tuple(1)
+        val = []
         i = 0
-        while(val[i] != "exit" or val[i] != KeyboardInterrupt):
-            val[i] = self.insertValues()
+        while True:
+            val.append(self.insertValues())
+            if(val[i] != "exit" or val[i] != "Exit"):
+                val = val [ : -1]
+                break
             i += 1
-        self.connection.quotient(val)
+        for x in val:
+            self.connection.quotient(x)
         print(self.connection.lastResult)
         self.askToConitnue()
 
