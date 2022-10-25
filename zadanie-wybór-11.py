@@ -6,12 +6,12 @@
 def inputValues():
     while True:
         try:
-            Vinput = float(input("Podaj liczbę: "))
+            vinput = float(input("Podaj liczbę: "))
         except:
             print("Błędna wartość")
             continue
         else:
-            return Vinput
+            return vinput
 
 
 def nwd(a,b):
@@ -24,11 +24,18 @@ def nwd(a,b):
         return a
 
 def nww(a,b):
-    w = (a * b) / nwd(a,b)
-    return w
+    try:
+        w = (a * b) / nwd(a,b)
+    except:
+        if(a == 0 or b == 0):
+            print("Jedna z wprowadzonych liczb to 0, więc wynik też będzie równy 0")
+        else:
+            print("Błędne dane wejściowe")
+        exit()
+    else:
+        return w
 
 def run():
-
     print(nww(nww(inputValues(),inputValues()),inputValues()))
 
 run()
